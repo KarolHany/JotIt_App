@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jotit_app/views/note_view.dart';
 
 void main() {
   runApp(const NoteApp());
@@ -11,9 +12,11 @@ class NoteApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
+      theme: ThemeData(
+        brightness: Brightness.dark,
+      ),
       title: 'JOTIT',
-      home: Scaffold(),
+      home: const NoteView(),
     );
   }
 }
