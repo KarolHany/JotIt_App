@@ -1,5 +1,5 @@
 part of 'add_note_cubit.dart';
-
+// 1-create states
 @immutable
 abstract class AddNoteState {}
 

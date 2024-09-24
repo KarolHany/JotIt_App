@@ -6,19 +6,18 @@ import 'package:jotit_app/models/note_model.dart';
 import 'package:meta/meta.dart';
 
 part 'add_note_state.dart';
-
-class AddNoteCubit extends Cubit<AddNoteState> {
+// 2-create cubit
+class AddNoteCubit extends Cubit<AddNoteState> { 
   AddNoteCubit() : super(AddNoteInitial());
- // Add Method
+  // 3-Add Method (create functions)
   addNote(NoteModel note) async {
+    emit(AddNoteLoading());
     try {
-      emit(AddNoteLoading());
-      var noteBox = Hive.box(kNotesBox);
+      var noteBox = Hive.box<NoteModel>(kNotesBox);
       await noteBox.add(note);
       emit(AddNoteSuccess());
     } catch (e) {
       emit(AddNoteFailure(errorMessage: e.toString()));
     }
   }
-  
 }
