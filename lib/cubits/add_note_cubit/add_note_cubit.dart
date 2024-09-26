@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:jotit_app/constants.dart';
 import 'package:jotit_app/models/note_model.dart';
-import 'package:meta/meta.dart';
+
 
 part 'add_note_state.dart';
 // 2-create cubit
