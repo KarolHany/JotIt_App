@@ -6,12 +6,15 @@ import 'package:jotit_app/models/note_model.dart';
 import 'package:jotit_app/simple_bloc_observer.dart';
 import 'package:jotit_app/views/note_view.dart';
 
+import 'cubits/notes_cubit/notes_cubit.dart';
+
 void main() async {
   await Hive.initFlutter();
-   Hive.registerAdapter(
+  Hive.registerAdapter(
       NoteModelAdapter()); // guide app to use hive with NoteModel (i choose the udapter that i want to hive use it in my app)
   await Hive.openBox<NoteModel>(kNotesBox);
-  Bloc.observer = SimpleBlocObserver(); // can hook into lifecycle events of your Blocs/Cubits
+  Bloc.observer =
+      SimpleBlocObserver(); // can hook into lifecycle events of your Blocs/Cubits
   runApp(const NoteApp());
 }
 
@@ -20,14 +23,17 @@ class NoteApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        fontFamily: 'Poppins',
+    return BlocProvider(
+     create: (context) => NotesCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          brightness: Brightness.dark,
+          fontFamily: 'Poppins',
+        ),
+        title: 'JOTIT',
+        home: const NoteView(),
       ),
-      title: 'JOTIT',
-      home: const NoteView(),
     );
   }
 }
