@@ -8,7 +8,8 @@ class AddNoteButtomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider( // 4-provide cubit
+    return BlocProvider(
+      // 4-provide cubit
       create: (context) => AddNoteCubit(),
       child: BlocConsumer<AddNoteCubit, AddNoteState>(
         listener: (context, state) {
@@ -21,11 +22,17 @@ class AddNoteButtomSheet extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          return  AbsorbPointer(
-            absorbing: state is AddNoteLoading ? true : false, // make a textFromField non active when you click on a custom buttom
-            child: const Padding(
-              padding: EdgeInsets.all(16),
-              child: SingleChildScrollView(child: NoteForm()),
+          return AbsorbPointer(// make a textFromField non active when you click on a custom buttom
+            absorbing: state is AddNoteLoading
+                ? true
+                : false, 
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: 16,
+                right: 16,
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+              ),
+              child:const SingleChildScrollView(child: NoteForm()),
             ),
           );
         },
