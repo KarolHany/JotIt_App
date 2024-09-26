@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jotit_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:jotit_app/models/note_model.dart';
 import 'package:jotit_app/views/edit_note_view.dart';
+import 'package:jotit_app/views/note_details.dart';
 
 class CustomNoteItem extends StatelessWidget {
   const CustomNoteItem({
@@ -18,7 +19,7 @@ class CustomNoteItem extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const EditNoteView(),
+              builder: (context) =>  NoteDetailsPage(note: notes,),
             ));
       },
       child: Container(

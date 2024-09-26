@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:jotit_app/constants.dart';
+import 'package:jotit_app/helper/constants.dart';
 import 'package:jotit_app/models/note_model.dart';
-import 'package:jotit_app/simple_bloc_observer.dart';
+import 'package:jotit_app/helper/simple_bloc_observer.dart';
 import 'package:jotit_app/views/note_view.dart';
 
 import 'cubits/notes_cubit/notes_cubit.dart';

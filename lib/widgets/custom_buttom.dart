@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jotit_app/constants.dart';
+import 'package:jotit_app/helper/constants.dart';
 
 class CustomButtom extends StatelessWidget {
   const CustomButtom({super.key , this.onTap,  this.isLoading = false});
