@@ -29,7 +29,7 @@ class _NoteViewBodyState extends State<NoteViewBody> {
           ),
           CustomAppBar(
             text: 'Notes',
-            icon: Icons.search,
+            icon: Icon(Icons.search , color: Colors.white,),
           ),
           SizedBox(
             height: 10,
