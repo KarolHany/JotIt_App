@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jotit_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:jotit_app/helper/constants.dart';
+import 'package:jotit_app/models/note_model.dart';
 
 class ColorItem extends StatelessWidget {
   const ColorItem({super.key, required this.isActive, required this.color});
@@ -14,7 +15,7 @@ class ColorItem extends StatelessWidget {
             backgroundColor: Colors.white,
             radius: 20,
             child: CircleAvatar(
-              radius: 18,
+              radius: 16,
               backgroundColor: color,
             ),
           )
@@ -33,18 +34,6 @@ class ColorsListView extends StatefulWidget {
 }
 
 class _ColorsListViewState extends State<ColorsListView> {
-  List<Color> colors = const [
-    Color(0xFF5B3758),
-    Color(0xFFC65B7C),
-    Color(0xFFF9627D),
-    Color(0xFFF9ADA0),
-    Color(0xFF83B692),
-    Color(0xFF5E503F),
-    Color(0xFFA9927D),
-    Color(0xFFF2F4F3),
-    Color(0xFF22333B),
-    Color(0xFFBADEFC),
-  ];
   int colorIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -52,18 +41,61 @@ class _ColorsListViewState extends State<ColorsListView> {
       height: 20 * 2,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: colors.length,
+        itemCount: kColors.length,
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 6),
             child: GestureDetector(
               onTap: () {
                 colorIndex = index;
-                BlocProvider.of<AddNoteCubit>(context).color = colors[index];
+                BlocProvider.of<AddNoteCubit>(context).color = kColors[index];
                 setState(() {});
               },
               child: ColorItem(
-                color: colors[index],
+                color: kColors[index],
+                isActive: colorIndex == index,
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class EditNoteColorsList extends StatefulWidget {
+  const EditNoteColorsList({super.key, required this.note});
+  final NoteModel note;
+  @override
+  State<EditNoteColorsList> createState() => _EditNoteColorsListState();
+}
+
+class _EditNoteColorsListState extends State<EditNoteColorsList> {
+  late int colorIndex;
+  @override
+  void initState() {
+    colorIndex = kColors.indexOf(Color(widget.note.color));
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 20 * 2,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: kColors.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 6),
+            child: GestureDetector(
+              onTap: () {
+                colorIndex = index;
+                widget.note.color = kColors[index].value;
+                setState(() {});
+              },
+              child: ColorItem(
+                color: kColors[index],
                 isActive: colorIndex == index,
               ),
             ),

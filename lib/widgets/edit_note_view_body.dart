@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jotit_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:jotit_app/models/note_model.dart';
+import 'package:jotit_app/widgets/colors_list_view.dart';
 import 'package:jotit_app/widgets/custom_app_bar.dart';
 import 'package:jotit_app/widgets/edit_text_field.dart';
 
@@ -71,6 +72,10 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
               labelText: 'Content',
               controller: _contentController,
               maxLines: 5,
+            ),
+            const SizedBox(height: 16),
+            EditNoteColorsList(
+              note: widget.note,
             )
           ],
         ),
