@@ -18,7 +18,7 @@ class NoteView extends StatelessWidget {
                 return const AddNoteButtomSheet();
               });
         },
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.grey.shade800,
         child: const Icon(
           Icons.add,
           size: 30,

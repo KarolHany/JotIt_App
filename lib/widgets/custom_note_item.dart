@@ -5,7 +5,6 @@ import 'package:jotit_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:jotit_app/models/note_model.dart';
 import 'package:jotit_app/views/edit_note_view.dart';
 
-
 class CustomNoteItem extends StatelessWidget {
   const CustomNoteItem({
     super.key,
@@ -19,7 +18,9 @@ class CustomNoteItem extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => EditNoteView(note: notes,),
+              builder: (context) => EditNoteView(
+                note: notes,
+              ),
             ));
       },
       child: Container(

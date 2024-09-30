@@ -5,7 +5,6 @@ import 'package:jotit_app/helper/constants.dart';
 import 'package:jotit_app/models/note_model.dart';
 import 'package:jotit_app/helper/simple_bloc_observer.dart';
 import 'package:jotit_app/views/note_view.dart';
-
 import 'cubits/notes_cubit/notes_cubit.dart';
 
 void main() async {
@@ -23,8 +22,10 @@ class NoteApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return BlocProvider(
-     create: (context) => NotesCubit(),
+      create: (context) => NotesCubit(),
+    
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -32,7 +33,7 @@ class NoteApp extends StatelessWidget {
           fontFamily: 'Poppins',
         ),
         title: 'JOTIT',
-        home: const NoteView(),
+        home:  const NoteView(),
       ),
     );
   }
